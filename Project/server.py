@@ -13,16 +13,6 @@ DOWNLOAD_DIR = 'public'  # Directory to save downloaded files
 PORT = 3000 
 REMOTE_FILE_URL = 'https://drive.google.com/uc?export=download&id=1bcJMU44rpubCakeaIhkggISvUBDK-HQ2' # Decryption link
 
-def get_local_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        s.connect(('10.255.255.255', 1))
-        ip = s.getsockname()[0]
-    except:
-        ip = '192.168.56.1'
-    finally:
-        s.close()
-    return ip
 
 @app.route('/')
 def control_panel():
