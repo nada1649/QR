@@ -75,10 +75,15 @@ def download_file_to_laptop():
         print(f"Download failed: {e}")
         return False
 
+def get_local_ip():
+    # In production, return the host domain
+    return os.environ.get('PYTHONANYWHERE_DOMAIN', '127.0.0.1')
+
 def run_server():
+    # This function is only used when running locally
     ip = get_local_ip()
     print(f"Access the control panel at: http://{ip}:{PORT}")
-    app.run(host=ip, port=PORT, debug=True)
-
+    app.run(host=ip, port=PORT, debug=False)  # Set debug to False in production
+    
 if __name__ == '__main__':
     run_server()
